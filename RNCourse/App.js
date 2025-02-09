@@ -11,10 +11,10 @@ export default function App() {
 
     function addGoalHandler() {
         setCourseGoal(currentCourseGoals => [
-            ...currentCourseGoals, // Use currentCourseGoals instead of courseGoals
-            { id: Math.random().toString(), text: enterGoalText } // Each goal should be an object with an id
+            ...currentCourseGoals,
+            { id: Math.random().toString(), text: enterGoalText }
         ]);
-        setEnterGoalText(""); // Clear input after adding
+        setEnterGoalText("");
     }
 
     return (
@@ -24,15 +24,15 @@ export default function App() {
                     style={styles.textInput}
                     placeholder="Your course goal!"
                     onChangeText={goalInputHandler}
-                    value={enterGoalText} // Bind value to state
+                    value={enterGoalText}
                 />
                 <Button title="Add Goal" onPress={addGoalHandler} />
             </View>
             <View style={styles.goalsContainer}>
                 <FlatList
                     data={courseGoals}
-                    keyExtractor={(item) => item.id} // Extract key properly
-                    renderItem={({ item }) => (
+                    keyExtractor={(item) => item.id} // Fixed keyExtractor
+                    renderItem={({ item }) => ( // Fixed renderItem syntax
                         <View style={styles.goalItems}>
                             <Text style={styles.goalText}>{item.text}</Text>
                         </View>
@@ -77,4 +77,3 @@ const styles = StyleSheet.create({
         color: "white",
     },
 });
-
