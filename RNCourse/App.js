@@ -31,12 +31,16 @@ export default function App() {
             <View style={styles.goalsContainer}>
                 <FlatList
                     data={courseGoals}
-                    keyExtractor={(item) => item.id} // Fixed keyExtractor
-                    renderItem={({ item }) => ( // Fixed renderItem syntax
-                        <View style={styles.goalItems}>
-                            <Text style={styles.goalText}>{item.text}</Text>
-                        </View>
-                    )}
+                    renderItem={(itemData) => {
+                        return (
+                            <View style={styles.goalItem}>
+                                <Text style={styles.goalText}>{itemData.item.text}</Text>
+                            </View>
+                        );
+                    }}
+                    keyExtractor={(item, index) => {
+                        return item.id;
+                    }}
                     alwaysBounceVertical={false}
                 />
             </View>
@@ -67,7 +71,7 @@ const styles = StyleSheet.create({
     goalsContainer: {
         flex: 5,
     },
-    goalItems: {
+    goalItem: {
         margin: 8,
         padding: 8,
         borderRadius: 6,
