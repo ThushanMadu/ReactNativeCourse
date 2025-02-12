@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: "red",
         width: "70%",
-        padding: 8,
+        padding: 9,
     },
     goalsContainer: {
         flex: 5,
